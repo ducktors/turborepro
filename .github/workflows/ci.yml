@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  TURBO_TEAM: team_ducktors
+  TURBO_TOKEN: turbotokenoss
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        server:
+          - name: trrc.ducktors.dev
+            api: https://trrc.ducktors.dev
+          - name: turbo.ducktors.dev
+            api: https://turbo.ducktors.dev
+          - name: do-trrc.ducktors.dev
+            api: https://do-trrc.ducktors.dev
+    name: Test ${{ matrix.server.name }}
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+        env:
+          TURBO_API: ${{ matrix.server.api }}
