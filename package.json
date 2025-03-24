@@ -1,10 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo build --color",
-    "build:server1": "TURBO_API=https://trrc.ducktors.dev turbo build --force --color",
-    "build:server2": "TURBO_API=https://turbo.ducktors.dev turbo build --force --color",
-    "build:server3": "TURBO_API=https://do-trrc.ducktors.dev turbo build --force --color",
+    "build": "turbo build --force",
     "precommit": "pnpm install",
     "preinstall": "npx only-allow pnpm"
   },
