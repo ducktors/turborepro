@@ -22,3 +22,18 @@ updates:
       interval: "daily"
     commit-message:
       prefix: "fix(docker)"
+
+  - package-ecosystem: npm
+    directory: /apps/api
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /apps/web
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/shared
+    schedule:
+      interval: daily
