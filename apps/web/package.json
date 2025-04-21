@@ -12,7 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.2",
     "@heroicons/react": "^2.2.0",
-    "@tanstack/react-query": "^5.74.3",
+    "@tanstack/react-query": "^5.74.4",
     "@turborepro/shared": "workspace:*",
     "axios": "^1.8.4",
     "react": "^19.1.0",
