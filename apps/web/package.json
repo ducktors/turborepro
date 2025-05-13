@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.2",
+    "@headlessui/react": "^2.2.3",
     "@heroicons/react": "^2.2.0",
     "@tanstack/react-query": "^5.76.0",
     "@turborepro/shared": "workspace:*",
