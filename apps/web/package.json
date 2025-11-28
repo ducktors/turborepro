@@ -15,11 +15,11 @@
     "@tanstack/react-query": "^5.90.11",
     "@turborepro/shared": "workspace:*",
     "axios": "^1.11.0",
-    "react": "^19.1.1",
+    "react": "^19.2.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.2.7",
     "@types/react-dom": "^19.1.6",
     "@typescript-eslint/eslint-plugin": "^8.46.4",
     "@typescript-eslint/parser": "^8.31.0",
